@@ -1,0 +1,17 @@
+{
+  "name": "aoc2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01.1.js",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r esm 03.1.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
