@@ -15,14 +15,13 @@ const main = () =>  {
         if (visited.includes(pos) || pos > code.length) return [-1, accumulator];
         if (pos == code.length) return [0, accumulator];
 
-        visited.push(pos);
         switch (code[pos].op) {
             case 'nop':
-                return runCode(code, pos + 1, accumulator, visited);
+                return runCode(code, pos + 1, accumulator, [...visited, pos]);
             case 'acc':
-                return runCode(code, pos + 1, accumulator + code[pos].val, visited);
+                return runCode(code, pos + 1, accumulator + code[pos].val, [...visited, pos]);
             case 'jmp':
-                return runCode(code, pos + code[pos].val, accumulator, visited);
+                return runCode(code, pos + code[pos].val, accumulator, [...visited, pos]);
         }
         
     }
