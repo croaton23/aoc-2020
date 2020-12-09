@@ -1,15 +1,12 @@
 import { readTextFile } from './utils/io';
 
-
-
 const main = () =>  {
 
     // 8.1
-    const code = (readTextFile('08.1.txt')
+    const code = readTextFile('08.1.txt')
         .split('\n')
         .map(line => line.split(' '))
-        .map(line => ({op: line[0], val: +line[1]}))
-    )
+        .map(line => ({op: line[0], val: +line[1]}));
 
     const runCode = (code, pos, accumulator, visited) => {
         if (visited.includes(pos) || pos > code.length) return [-1, accumulator];
@@ -23,7 +20,6 @@ const main = () =>  {
             case 'jmp':
                 return runCode(code, pos + code[pos].val, accumulator, [...visited, pos]);
         }
-        
     }
 
     console.log(runCode(code, 0, 0, [])[1]);
@@ -48,9 +44,9 @@ const main = () =>  {
     }
 
     const jmp2Nop = codeReplacer(code, 'jmp', 'nop', 0);
-    console.log(jmp2Nop === -1 
+    console.log(jmp2Nop !== -1 
         ? jmp2Nop 
-        : codeReplacer(code, 'jmp', 'nop', 0));
+        : codeReplacer(code, 'nop', 'jmp', 0));
 }
 
 main();
