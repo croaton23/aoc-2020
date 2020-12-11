@@ -15,11 +15,9 @@ const main = () =>  {
         return job(index) || forLoop(index + 1, maxIndex, job);
     }
 
-    let prev = 0;
-    let sums = [0,0,1];
-    forLoop(0, jolts.length, (i) => {
-        sums[jolts[i]-prev-1]++;
-        prev = jolts[i];    
+    let sums = [1,0,1];
+    forLoop(1, jolts.length, i => {
+        sums[jolts[i] - jolts[i-1] - 1]++;
     });
     console.log(sums[0] * sums[2]);
 
