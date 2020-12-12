@@ -11,12 +11,13 @@ const main = () =>  {
     const m = seats.length;
     const n = seats[0].length;
     while (change) {
+        
         change = false;
         let copy = JSON.parse(JSON.stringify(seats));
+
         for(let i = 0; i < m; ++i) {
             for(let j = 0; j < n; ++j) {
-                if (seats[i][j] === '.') continue;
-
+                
                 let neighbours = [];
                 if (i > 0) neighbours.push(seats[i-1][j]);
                 if (j > 0) neighbours.push(seats[i][j-1]);
@@ -26,6 +27,7 @@ const main = () =>  {
                 if (i < m-1 && j < n-1) neighbours.push(seats[i+1][j+1]);
                 if (i < m-1 && j > 0) neighbours.push(seats[i+1][j-1]);
                 if (i > 0 && j < n-1) neighbours.push(seats[i-1][j+1]);
+                
                 if (seats[i][j] === 'L' && neighbours.every(neigh => neigh !== '#')) {
                     copy[i][j] = '#';
                     change = true;
@@ -34,10 +36,9 @@ const main = () =>  {
                     copy[i][j] = 'L';
                     change = true;
                 }
-                
             }
         }
-        seats = copy.slice();
+        seats = copy;
     }
     console.table([].concat(...seats).filter(s => s==='#').length);
 
@@ -94,6 +95,7 @@ const main = () =>  {
                     copy[i][j] = '#';
                     change = true;
                 }
+                
                 if (seats[i][j] === '#' && neighbours.filter(neigh => neigh === '#').length >= 5){
                     copy[i][j] = 'L';
                     change = true;
