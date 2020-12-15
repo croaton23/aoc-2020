@@ -71,7 +71,7 @@ int main() {
                     address[i] = (char)( ( (((uint64_t)index) >> (35-i)) & 1) + '0');
             }
 
-            for(int i = 0; i < (1 << (xAmount+1)); ++i)
+            for(int i = 0; i < (1 << xAmount); ++i)
             {
                 string copy(address);
                 for(int j = 0; j < xAmount; ++j)
