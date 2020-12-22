@@ -8,7 +8,6 @@ const main = () =>  {
         .map(row => row.split('(contains '))
         .map(row => ({ings: row[0].trim().split(' '), algs: row[1].slice(0, -1).split(', ')}))
     
-    const copy = JSON.parse(JSON.stringify(menus));
     let found = new Map();
     let change = true;
     while (change) {
@@ -39,10 +38,7 @@ const main = () =>  {
                             console.log('her')
                         }
                     }
-                    //console.log('same', same)
-                    //console.log('intersect', intersect)
 
-                    // const same = menus[i].ings.filter(v => menus[j].ings.includes(v));
                     if (same.length === 1) {
                         change = true;
                         found.set(intersect[0], same[0]);
@@ -53,7 +49,6 @@ const main = () =>  {
                         myBreak = true;
                     }
                 }
-                //console.log(menus);
             }
         }
     }
@@ -61,11 +56,6 @@ const main = () =>  {
     found = new Map([...found.entries()].sort());
     console.log([...found.entries()].sort());
     console.log([...found.values()].reduce((str, a) => str += `${a},`, ""));
-    //console.log(menus);
-    //console.log([].concat(...menus.map(m => m.ings)).reduce((set, el) => { set.add(el); return set;},new Set()).size);
-    //console.log([].concat(...menus.map(m => m.ings)).length);
 }
 
 main();
-
-// 2857
