@@ -13,7 +13,7 @@
             ],
             "runtimeExecutable": "npm",
             "program": "${workspaceFolder}/src/19.js",
-            "runtimeArgs": ["run-script", "debug"]
+            "runtimeArgs": ["run-script", "start"]
         }
     ]
 }

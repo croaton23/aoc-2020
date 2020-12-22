@@ -5,9 +5,7 @@ const work = (el, rules) => {
     if (el === '"a"' || el === '"b"') {
         return [...el.slice(1, -1)];
     } else {
-        //console.log('el', el)
         let row = rules[el];
-        //console.log('row', row);
         if (row.length === 1) return work(row[0], rules);
 
         const orIndex = row.indexOf('|');
@@ -17,13 +15,13 @@ const work = (el, rules) => {
             options.push(row.slice(orIndex + 1));
         } else options.push(row);
         let globalRes = [];
+        
         for (let p =0; p < options.length; ++p)
         {
             let res = [[]];
             row = options[p];
             for(let i = 0; i < row.length; ++i) {
                 const all = work(row[i], rules);
-                //console.log('all', all);
                 let newRes = [];
                 for(let j = 0; j < res.length; ++j) {
                     for(let k = 0; k < all.length; ++k) {
@@ -31,10 +29,8 @@ const work = (el, rules) => {
                     }
                 }
                 res = JSON.parse(JSON.stringify(newRes));
-                //console.log('res', res)
             }
             globalRes = globalRes.concat([...res]);
-            //console.log('globalRes', globalRes)
         }
         
         return globalRes;
