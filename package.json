@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm src/23.js"
+    "start": "node -r esm src/24.js"
   },
   "author": "",
   "license": "ISC"
